@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <!-- <style>
+            div {
+                border : 1px solid #000;
+                padding: 5px 10px
+            }
+        </style> -->
+    </head>
+    <body>
+        <div id="app">
+           <p v-if="show">Beni Görebilirsin!</p>
+           <p v-else>Beni görebilir misin acaba? :)</p> 
+           <button @click="show =! show">Göster/Gizle</button>
+            
+            <p v-if="number<10">Sayı 10'dan küçüktür</p>
+            <p v-else-if="number > 10">Sayı 10'dan büyüktür</p>
+            <p v-else>Sayı 10'a eşittir</p>
+            <hr>
+            <button @click="showParagh= !showParagh">Göster/Gizle</button>
+            <p v-show="showParagh">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda optio voluptates culpa quia amet similique dolores deserunt. Maxime magni ut recusandae excepturi modi, repudiandae dolor voluptatum totam, cum dolorum commodi.</p>
+            <hr>
+            <ul>
+                <!-- <li v-for="product in products">{{ product }}</li> -->
+                <li v-for="(product, index) in products" :key="product">{{ product }} - {{ index }}</li>
+            </ul>
+            <button @click="products.push('Hoparlör')">Ekle</button>
+            <hr>
+            <div v-for="(product,index) in products">
+                <h3>{{ product }}</h3>
+                <p>{{ index }}</p>
+            </div>
+            <hr>
+            <template v-for="(product, index) in products">
+               <h3>{{ product }}</h3>
+               <p>{{ index }}</p> 
+            </template>
+            <hr>
+            <ul>
+                <li v-for="personel in persons">
+                    <ul>
+                        <li v-for="(value, key, index) in personel"><strong>{{ key }}</strong>: {{ value }} - {{ index }}</li>
+                    </ul>
+                </li>
+            </ul>
+            <hr>
+
+            <span v-for="i in 5">{{ i }}</span>
+        </div>
+
+
+    </body>
+    <script>
+        new Vue ({
+            el: "#app",
+
+            data: {
+                show: false,
+                number: 15,
+                showParagh: false,
+                products: ["Monitör","Klavye","Askı","Masa"],
+                persons: [
+                    { name : "Ceren", email:"ceku@cemail.com"},
+                    { name : "Cero", email:"cero@cemail.com"},
+                    { name : "Ceyn", email:"ceyn@cemail.com"},
+                    { name : "Cekol", email:"cekol@cemail.com"}
+
+
+                ]
+            }
+        })
+    </script>
+
+
+
+
+
+
+</html>
